@@ -10,31 +10,34 @@ angular.module('angulartsApp', [
     'ui.router'
 ]).config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
-    $stateProvider.state('main', {
+    $stateProvider.state('layout', {
+        abstract: true,
+        views: {
+            '': {
+                templateUrl: 'views/layout.html'
+            },
+            'nav@layout': {
+                templateUrl: 'views/nav.html'
+            }
+        }
+    }).state('layout.main', {
         url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-    }).state('about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-    }).state('todos', {
-        templateUrl: 'views/todos.html',
-        controller: 'TodosCtrl',
-        controllerAs: 'todos'
-    }).state('system', {
+    }).state('layout.system', {
+        url: '/system',
         templateUrl: 'views/system.html',
         controller: 'SystemCtrl',
         controllerAs: 'system'
-    }).state('parameter', {
+    }).state('layout.parameter', {
         templateUrl: 'views/parameter.html',
         controller: 'ParameterCtrl',
         controllerAs: 'parameter'
-    }).state('instance', {
+    }).state('layout.instance', {
         templateUrl: 'views/instance.html',
         controller: 'InstanceCtrl',
         controllerAs: 'instance'
-    }).state('relation', {
+    }).state('layout.relation', {
         templateUrl: 'views/relation.html',
         controller: 'RelationCtrl',
         controllerAs: 'relation'

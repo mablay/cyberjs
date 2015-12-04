@@ -3,18 +3,18 @@
 'use strict';
 
 module angulartsApp {
-  export interface ISystemScope extends ng.IScope {
-    awesomeThings: any[];
-  }
 
   export class SystemCtrl {
+
+    id: string;
+    name: string;
+    description: string;
+    parameters: ParameterMap;
+    relations: RelationMap;
+
     // @ngInject
-    constructor (private $scope: ISystemScope) {
-      $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-      ];
+    constructor () {
+
     }
   }
 }

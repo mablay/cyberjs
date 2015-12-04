@@ -2,9 +2,9 @@
 'use strict';
 var angulartsApp;
 (function (angulartsApp) {
-    var TodosCtrl = (function () {
+    var MainCtrl = (function () {
         // @ngInject
-        function TodosCtrl($scope) {
+        function MainCtrl($scope) {
             this.$scope = $scope;
             $scope.awesomeThings = [
                 'HTML5 Boilerplate',
@@ -12,9 +12,9 @@ var angulartsApp;
                 'Karma'
             ];
         }
-        return TodosCtrl;
+        return MainCtrl;
     })();
-    angulartsApp.TodosCtrl = TodosCtrl;
+    angulartsApp.MainCtrl = MainCtrl;
 })(angulartsApp || (angulartsApp = {}));
-angular.module('angulartsApp').controller('TodosCtrl', angulartsApp.TodosCtrl);
-//# sourceMappingURL=todos.js.map
+angular.module('angulartsApp').controller('MainCtrl', angulartsApp.MainCtrl);
+//# sourceMappingURL=main.js.map

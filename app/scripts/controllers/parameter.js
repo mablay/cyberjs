@@ -4,13 +4,7 @@ var angulartsApp;
 (function (angulartsApp) {
     var ParameterCtrl = (function () {
         // @ngInject
-        function ParameterCtrl($scope) {
-            this.$scope = $scope;
-            $scope.awesomeThings = [
-                'HTML5 Boilerplate',
-                'AngularJS',
-                'Karma'
-            ];
+        function ParameterCtrl() {
         }
         return ParameterCtrl;
     })();
