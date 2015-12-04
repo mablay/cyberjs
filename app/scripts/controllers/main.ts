@@ -3,21 +3,17 @@
 'use strict';
 
 module angulartsApp {
-  export interface IMainScope extends ng.IScope {
-    awesomeThings: any[];
-  }
 
   export class MainCtrl {
+
+    instances: Array<string>;
+    systems: SystemData;
+
     // @ngInject
-    constructor (private $scope: IMainScope) {
-      $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-      ];
+    constructor ($localStorage) {
+      this.systems = new SystemData($localStorage);
     }
   }
 }
 
-angular.module('angulartsApp')
-  .controller('MainCtrl', angulartsApp.MainCtrl);
+angular.module('angulartsApp').controller('MainCtrl', angulartsApp.MainCtrl);

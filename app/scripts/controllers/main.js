@@ -4,13 +4,8 @@ var angulartsApp;
 (function (angulartsApp) {
     var MainCtrl = (function () {
         // @ngInject
-        function MainCtrl($scope) {
-            this.$scope = $scope;
-            $scope.awesomeThings = [
-                'HTML5 Boilerplate',
-                'AngularJS',
-                'Karma'
-            ];
+        function MainCtrl($localStorage) {
+            this.systems = new angulartsApp.SystemData($localStorage);
         }
         return MainCtrl;
     })();

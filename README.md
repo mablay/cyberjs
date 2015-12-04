@@ -1,6 +1,7 @@
 # Data structure
 
 System
+
 * id: string
 * name: string
 * description: string
@@ -8,6 +9,7 @@ System
 * relations: Map<relationId: string, relation: Relation>
 
 Parameter
+
 * id: string
 * name: string
 * description: string
@@ -16,6 +18,7 @@ Parameter
 * max: number
 
 Relation
+
 * id: string
 * name: string
 * description: string
@@ -24,10 +27,12 @@ Relation
 * data: array<number>
 
 Instance
+
 * ownerId: string (Ref:User)
 * history: array<State>
 
 State
+
 * systemParamRef
 * systemParamVal
 * System (deep copy)

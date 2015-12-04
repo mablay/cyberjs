@@ -4,8 +4,13 @@
 
 module angulartsApp {
 
-  export interface ParameterMap {
-    [key: string]: Parameter;
+  export interface IParameter {
+    id: string;
+    name: string;
+    description: string;
+    min: number;
+    max: number;
+    default: number;
   }
 
   export class ParameterCtrl {

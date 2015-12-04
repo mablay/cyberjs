@@ -1,4 +1,21 @@
 <div class="ditch">
 
-  <p>This is the system view.</p>
+  <h3>Systems</h3>
+
+  <!-- Add System -->
+  <div class="addSystemForm">
+    <input ng-model="newSystemName" type="text" />
+    <div class="btn btn-primary"
+         ng-click="systemCtrl.uiAddSystem(newSystemName)">
+      Add
+    </div>
+  </div>
+
+  <!-- List Systems-->
+  <ul>
+    <li ng-repeat="(id, system) in systemCtrl.list()"
+        ng-bind="system.name"></li>
+  </ul>
+
+  <pre ng-bind="systemCtrl.list()|json"></pre>
 </div>

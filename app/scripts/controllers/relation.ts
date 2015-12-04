@@ -3,18 +3,19 @@
 'use strict';
 
 module angulartsApp {
-  export interface IRelationScope extends ng.IScope {
-    awesomeThings: any[];
+  export interface IRelation {
+    id: string;
+    name: string;
+    description: string;
+    domainId: string;
+    coDomainId: string;
+    data: Array<number>;
   }
 
   export class RelationCtrl {
     // @ngInject
-    constructor (private $scope: IRelationScope) {
-      $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-      ];
+    constructor (private $scope: IRelation) {
+
     }
   }
 }

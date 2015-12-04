@@ -33,14 +33,14 @@ module.exports = function (grunt) {
         files: ['bower.json'],
         tasks: ['wiredep']
       },
-      typescript: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.ts'],
-        tasks: ['typescript:base']
-      },
-      typescriptTest: {
-        files: ['test/spec/{,*/}*.ts'],
-        tasks: ['typescript:test', 'karma']
-      },
+//      typescript: {
+//        files: ['<%= yeoman.app %>/scripts/{,*/}*.ts'],
+//        tasks: ['typescript:base']
+//      },
+//      typescriptTest: {
+//        files: ['test/spec/{,*/}*.ts'],
+//        tasks: ['typescript:test', 'karma']
+//      },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -402,7 +402,7 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'typescript:base',
+//        'typescript:base',
         'copy:styles'
       ],
       test: [
@@ -435,7 +435,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
-      'tsd:refresh',
+//      'tsd:refresh',
       'concurrent:server',
       'autoprefixer:server',
       'connect:livereload',

@@ -1,3 +1,18 @@
-<pre>
-  asdf
-</pre>
+<div class="row">
+  <!-- System List -->
+  <div class="col col-xs-6">
+    <h3>Systems</h3>
+    <div ng-repeat="(id, system) in vc.systems.list()"
+         class="btn btn-primary btn-block"
+         ng-bind="system.name"
+         ui-sref="layout.systemDetail({id:id})"></div>
+  </div>
+
+  <!-- Instance List -->
+  <div class="col col-xs-6">
+    <h3>Instances</h3>
+    <div ng-repeat="(id, instance) in vc.instance.list()"
+         class="btn btn-primary btn-block"
+         ng-bind="instance.name"></div>
+  </div>
+</div>

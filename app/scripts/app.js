@@ -1,5 +1,9 @@
-/// <reference path="../../typings/angularjs/angular.d.ts" />
-/// <reference path="../../typings/angular-ui-router/angular-ui-router.d.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
+/// <reference path="controllers/system.ts" />
+/// <reference path="controllers/parameter.ts" />
+/// <reference path="controllers/relation.ts" />
+/// <reference path="controllers/state.ts" />
+/// <reference path="controllers/instance.ts" />
 'use strict';
 angular.module('angulartsApp', [
     'ngAnimate',
@@ -7,10 +11,16 @@ angular.module('angulartsApp', [
     'ngResource',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
-]).config(function ($stateProvider, $urlRouterProvider) {
+    'ui.router',
+    'ngStorage'
+])
+    .config(['$localStorageProvider', function ($localStorageProvider) {
+        $localStorageProvider.setKeyPrefix('cy_');
+    }])
+    .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
-    $stateProvider.state('layout', {
+    $stateProvider
+        .state('layout', {
         abstract: true,
         views: {
             '': {
@@ -20,24 +30,36 @@ angular.module('angulartsApp', [
                 templateUrl: 'views/nav.html'
             }
         }
-    }).state('layout.main', {
+    })
+        .state('layout.main', {
         url: '/',
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-    }).state('layout.system', {
+        controller: 'MainCtrl',
+        controllerAs: 'vc'
+    })
+        .state('layout.system', {
         url: '/system',
         templateUrl: 'views/system.html',
         controller: 'SystemCtrl',
-        controllerAs: 'system'
-    }).state('layout.parameter', {
+        controllerAs: 'systemCtrl'
+    })
+        .state('layout.systemDetail', {
+        url: '/system/:id',
+        templateUrl: 'views/system-detail.html',
+        controller: 'SystemCtrl',
+        controllerAs: 'systemCtrl'
+    })
+        .state('layout.parameter', {
         templateUrl: 'views/parameter.html',
         controller: 'ParameterCtrl',
         controllerAs: 'parameter'
-    }).state('layout.instance', {
+    })
+        .state('layout.instance', {
         templateUrl: 'views/instance.html',
         controller: 'InstanceCtrl',
         controllerAs: 'instance'
-    }).state('layout.relation', {
+    })
+        .state('layout.relation', {
         templateUrl: 'views/relation.html',
         controller: 'RelationCtrl',
         controllerAs: 'relation'

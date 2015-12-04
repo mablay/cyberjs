@@ -2,9 +2,9 @@
 'use strict';
 var angulartsApp;
 (function (angulartsApp) {
-    var InstanceCtrl = (function () {
+    var StateCtrl = (function () {
         // @ngInject
-        function InstanceCtrl($scope) {
+        function StateCtrl($scope) {
             this.$scope = $scope;
             $scope.awesomeThings = [
                 'HTML5 Boilerplate',
@@ -12,10 +12,10 @@ var angulartsApp;
                 'Karma'
             ];
         }
-        return InstanceCtrl;
+        return StateCtrl;
     })();
-    angulartsApp.InstanceCtrl = InstanceCtrl;
+    angulartsApp.StateCtrl = StateCtrl;
 })(angulartsApp || (angulartsApp = {}));
 angular.module('angulartsApp')
-    .controller('InstanceCtrl', angulartsApp.InstanceCtrl);
-//# sourceMappingURL=instance.js.map
+    .controller('StateCtrl', angulartsApp.StateCtrl);
+//# sourceMappingURL=state.js.map

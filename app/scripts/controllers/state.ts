@@ -3,13 +3,13 @@
 'use strict';
 
 module angulartsApp {
-  export interface IInstance {
+  export interface IState {
     id: string;
     systemId: string;
-    history: Array<IState>
+    parameterValues: {[id: string]: number};
   }
 
-  export class InstanceCtrl {
+  export class StateCtrl {
     // @ngInject
     constructor (private $scope: any) {
       $scope.awesomeThings = [
@@ -22,4 +22,4 @@ module angulartsApp {
 }
 
 angular.module('angulartsApp')
-  .controller('InstanceCtrl', angulartsApp.InstanceCtrl);
+  .controller('StateCtrl', angulartsApp.StateCtrl);
