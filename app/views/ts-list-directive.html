@@ -1,0 +1,23 @@
+<div class="ts-list">
+  <div class="input-group">
+    <input ng-model="newEntryName"
+           type="text"
+           class="form-control"
+           placeholder="New Entry...">
+    <span class="input-group-btn">
+      <button class="btn btn-primary"
+              type="button"
+              ng-click="addEntry(newEntryName)"><span class="glyphicon glyphicon-plus"></span></button>
+    </span>
+  </div><!-- /input-group -->
+
+  <ul class="list-group">
+    <li ng-repeat="(id, entry) in service.list() track by $index"
+        class="list-group-item"
+        ng-click="selectEntry($index)">
+      <span ng-bind="entry.name"></span>
+      <span class="pull-right"
+            ng-click="removeEntry(id)">delete</span>
+    </li>
+  </ul>
+</div>

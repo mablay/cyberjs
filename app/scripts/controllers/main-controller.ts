@@ -7,11 +7,11 @@ module angulartsApp {
   export class MainCtrl {
 
     instances: Array<string>;
-    systems: SystemData;
+    systems: SystemService;
 
     // @ngInject
-    constructor ($localStorage) {
-      this.systems = new SystemData($localStorage);
+    constructor (System) {
+      this.systems = System;
     }
   }
 }

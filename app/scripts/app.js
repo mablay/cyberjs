@@ -1,10 +1,22 @@
 /// <reference path="../../typings/tsd.d.ts" />
-/// <reference path="controllers/system.ts" />
-/// <reference path="controllers/parameter.ts" />
-/// <reference path="controllers/relation.ts" />
-/// <reference path="controllers/state.ts" />
-/// <reference path="controllers/instance.ts" />
+/// <reference path="directives/ts-list-directive.ts" />
+/// <reference path="services/system-service.ts" />
+/// <reference path="services/parameter-service.ts" />
+/// <reference path="services/relation-service.ts" />
+/// <reference path="services/state-service.ts" />
+/// <reference path="services/instance-service.ts" />
+/// <reference path="controllers/system-controller.ts" />
+/// <reference path="controllers/parameter-controller.ts" />
+/// <reference path="controllers/relation-controller.ts" />
+/// <reference path="controllers/state-controller.ts" />
+/// <reference path="controllers/instance-controller.ts" />
 'use strict';
+var angulartsApp;
+(function (angulartsApp) {
+    angulartsApp.randomId = function () {
+        return '' + Math.floor((Math.random() * 100) + 1) + Date.now();
+    };
+})(angulartsApp || (angulartsApp = {}));
 angular.module('angulartsApp', [
     'ngAnimate',
     'ngCookies',

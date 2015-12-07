@@ -13,4 +13,4 @@ var angulartsApp;
 })(angulartsApp || (angulartsApp = {}));
 angular.module('angulartsApp')
     .controller('RelationCtrl', angulartsApp.RelationCtrl);
-//# sourceMappingURL=relation.js.map
+//# sourceMappingURL=relation-controller.js.map

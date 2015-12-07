@@ -18,4 +18,4 @@ var angulartsApp;
 })(angulartsApp || (angulartsApp = {}));
 angular.module('angulartsApp')
     .controller('InstanceCtrl', angulartsApp.InstanceCtrl);
-//# sourceMappingURL=instance.js.map
+//# sourceMappingURL=instance-controller.js.map

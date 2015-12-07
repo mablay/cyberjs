@@ -12,4 +12,4 @@ var angulartsApp;
 })(angulartsApp || (angulartsApp = {}));
 angular.module('angulartsApp')
     .controller('ParameterCtrl', angulartsApp.ParameterCtrl);
-//# sourceMappingURL=parameter.js.map
+//# sourceMappingURL=parameter-controller.js.map
