@@ -80,6 +80,7 @@ module angulartsApp {
     }
 
 
+
     uiAddSystem(name):void {
       console.log('[System] User added system %s', name);
       var system = this.data.create(name);

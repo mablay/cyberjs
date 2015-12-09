@@ -5,12 +5,12 @@
           ng-model="vc.relation.description"></textarea>
 <br>
 
-<form class="form-horizontal">
+<form class="form-horizontal" novalidate>
 
   <!-- DOMAIN -->
   <div class="form-group">
-    <label for="domain" class="col-xs-3 control-label">Domain</label>
-    <div class="col-xs-9">
+    <label for="domain" class="col-xs-3 col-md-2 control-label">Domain</label>
+    <div class="col-xs-9 col-md-10">
       <select id="domain"
               class="form-control"
               ng-model="vc.relation.domain"
@@ -19,10 +19,21 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-xs-offset-3 col-md-offset-2 col-xs-4 col-md-5">
+      Min
+      <span ng-bind="vc.parameters[vc.relation.domain].min"></span>
+    </div>
+    <div class="col-xs-5">
+      Max
+      <span ng-bind="vc.parameters[vc.relation.domain].max"></span>
+    </div>
+  </div>
+
   <!-- CODOMAIN -->
   <div class="form-group">
-    <label for="coDomain" class="col-xs-3 control-label">coDomain</label>
-    <div class="col-xs-9">
+    <label for="coDomain" class="col-xs-3 col-md-2 control-label">coDomain</label>
+    <div class="col-xs-9 col-md-10">
       <select id="coDomain"
               class="form-control"
               ng-model="vc.relation.coDomain"
@@ -31,15 +42,29 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-xs-offset-3 col-md-offset-2 col-xs-4 col-md-5">
+      Min
+      <span ng-bind="vc.parameters[vc.relation.coDomain].min"></span>
+    </div>
+    <div class="col-xs-5">
+      Max
+      <span ng-bind="vc.parameters[vc.relation.coDomain].max"></span>
+    </div>
+  </div>
+
   <!-- DATA -->
   <div class="form-group">
-    <label for="data" class="col-xs-3 control-label">Data</label>
-    <div class="col-xs-9">
+    <label for="data" class="col-xs-3 col-md-2 control-label">Data</label>
+    <div class="col-xs-9 col-md-10">
       <input type="text"
+             required=""
              class="form-control"
              id="data"
              placeholder="relation"
-             ng-model="vc.relation.data">
+             ng-model="vc.relation.data"
+             ng-change="vc.updateRelationData()">
+      <p ng-invalid="validateData()" ng-show="vc.relation.data.$invalid">WRONG!</p>
     </div>
   </div>
 
@@ -48,4 +73,5 @@
 
 
 <pre ng-bind="vc.relation|json"></pre>
+<pre ng-bind="vc.dataValidated"></pre>
 
