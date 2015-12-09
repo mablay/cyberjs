@@ -12,12 +12,14 @@
   </div><!-- /input-group -->
 
   <ul class="list-group">
-    <li ng-repeat="(id, entry) in service.list() track by $index"
-        class="list-group-item"
-        ng-click="selectEntry($index)">
-      <span ng-bind="entry.name"></span>
-      <span class="pull-right"
-            ng-click="removeEntry(id)">delete</span>
+    <li ng-repeat="(id, entry) in list track by id"
+        class="list-group-item">
+      <span ng-bind="entry.name"
+            ng-click="selectEntry(id)"></span>
+      <span class="pull-right clickable"
+            ng-click="removeEntry(id)">
+        <span class="glyphicon glyphicon-minus-sign"></span>
+      </span>
     </li>
   </ul>
 </div>

@@ -14,4 +14,4 @@ describe('Service: relationService', function () {
         expect(!!relationService).toBe(true);
     });
 });
-//# sourceMappingURL=relation-service.js.map
+//# sourceMappingURL=relation-factory.js.map

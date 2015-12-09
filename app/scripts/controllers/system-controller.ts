@@ -11,16 +11,18 @@ module angulartsApp {
 
     data:SystemService;
     system:ISystem;
-    parameter:ParameterService;
+    parameters:ParameterFactory;
+    relations:RelationFactory;
 
     // @ngInject
-    constructor (System, Parameter, $stateParams) {
-      console.log($stateParams);
+    constructor (System, ParameterFactory, RelationFactory, $stateParams, public $state) {
+      console.log('[SystemCtrl] constructor stateParams.systemId %o', $stateParams.systemId);
       this.data = System;//new SystemService($localStorage);
-      this.parameter = Parameter;//new ParameterData($localStorage);
-      console.log('[SystemCtrl] constructor %o', this.parameter.list());
-      if ($stateParams.id) {
-        this.system = this.data.read($stateParams.id);
+      if ($stateParams.systemId) {
+        this.system = this.data.read($stateParams.systemId);
+        this.parameters = ParameterFactory(this.system.id);
+        this.relations = RelationFactory(this.system.id);
+        console.log('[SystemCtrl] constructor %o', this.parameters);
       }
     }
 
@@ -37,6 +39,15 @@ module angulartsApp {
       console.debug('[System] Add parameter %s', name);
       this.system.parameters.push(name);
     }
+    uiSelectParameter(parameterId):void {
+      var state:any = angular.injector(['ui.router']).get('$state');
+      var systemId = state.params.systemId;
+      //var id = $scope.service.list();
+      console.debug('[System] system %s, uiSelectParameter %s', systemId, parameterId)
+      console.debug('[System] uiSelectParameter. Navigate to system[%s].parameter[%s]', systemId, parameterId);
+      this.$state.go('layout.system.parameter', {systemId: systemId, parameterId:parameterId});
+    }
+
     uiRemoveParameter(index):void {
       var name = this.system.parameters[index];
       console.debug('[System] Remove parameter %s', name);

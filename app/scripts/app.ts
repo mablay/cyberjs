@@ -1,8 +1,9 @@
 /// <reference path="../../typings/tsd.d.ts" />
 /// <reference path="directives/ts-list-directive.ts" />
 /// <reference path="services/system-service.ts" />
-/// <reference path="services/parameter-service.ts" />
-/// <reference path="services/relation-service.ts" />
+/// <reference path="services/parameter-factory.ts" />
+/// <reference path="services/parameter-factory.ts" />
+/// <reference path="services/relation-factory.ts" />
 /// <reference path="services/state-service.ts" />
 /// <reference path="services/instance-service.ts" />
 /// <reference path="controllers/system-controller.ts" />
@@ -55,19 +56,20 @@ angular.module('angulartsApp', [
         controller: 'MainCtrl',
         controllerAs: 'vc'
       })
-      .state('layout.system', {
+      .state('layout.systems', {
         url: '/system',
         templateUrl: 'views/system.html',
         controller: 'SystemCtrl',
         controllerAs: 'systemCtrl'
       })
-      .state('layout.systemDetail', {
-        url: '/system/:id',
+      .state('layout.system', {
+        url: '/system/:systemId',
         templateUrl: 'views/system-detail.html',
         controller: 'SystemCtrl',
         controllerAs: 'systemCtrl'
       })
-      .state('layout.parameter', {
+      .state('layout.system.parameter', {
+        url: '/parameter/:parameterId',
         templateUrl: 'views/parameter.html',
         controller: 'ParameterCtrl',
         controllerAs: 'parameter'
