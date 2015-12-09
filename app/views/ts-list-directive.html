@@ -3,7 +3,8 @@
     <input ng-model="newEntryName"
            type="text"
            class="form-control"
-           placeholder="New Entry...">
+           placeholder="New Entry..."
+           ng-keypress="$event.keyCode===13 && addEntry(newEntryName)">
     <span class="input-group-btn">
       <button class="btn btn-primary"
               type="button"

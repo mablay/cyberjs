@@ -19,9 +19,9 @@ module angulartsApp {
     id: string;
     name: string;
     description: string;
-    min: number;
-    max: number;
-    default: number;
+    domain: string;
+    coDomain: string;
+    data: any;
   }
 
   export class RelationService {
@@ -43,10 +43,10 @@ module angulartsApp {
       var relation:IRelation = {
         id: randomId(),
         name: 'New System',
-        description: '',
-        min: 0,
-        max: 100,
-        default: 10
+        description: null,
+        domain: null,
+        coDomain: null,
+        data: []
       };
 
       if (typeof opt === 'string') {

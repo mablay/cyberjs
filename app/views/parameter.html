@@ -1,3 +1,50 @@
-<h3>Parameter Details</h3>
+<h3>Parameter - <span ng-bind="vc.parameter.name"></span></h3>
+<textarea class="form-control"
+          rows="3"
+          placeholder="Description..."
+          ng-model="vc.parameter.description"></textarea>
+<br>
+
+<form class="form-horizontal">
+
+  <!-- MINIMUM -->
+  <div class="form-group">
+    <label for="min" class="col-sm-2 control-label">Minimum</label>
+    <div class="col-sm-10">
+      <input type="number"
+             class="form-control"
+             id="min"
+             placeholder="0"
+             ng-model="vc.parameter.min">
+    </div>
+  </div>
+
+  <!-- MAXIMUM -->
+  <div class="form-group">
+    <label for="max" class="col-sm-2 control-label">Maximum</label>
+    <div class="col-sm-10">
+      <input type="number"
+             class="form-control"
+             id="max"
+             placeholder="0"
+             ng-model="vc.parameter.max">
+    </div>
+  </div>
+
+  <!-- DEFAULT -->
+  <div class="form-group">
+    <label for="default" class="col-sm-2 control-label">Default</label>
+    <div class="col-sm-10">
+      <input type="number"
+             class="form-control"
+             id="default"
+             placeholder="10"
+             ng-model="vc.parameter.default">
+    </div>
+  </div>
+
+</form>
+
+
 
 <pre ng-bind="vc.parameter|json"></pre>

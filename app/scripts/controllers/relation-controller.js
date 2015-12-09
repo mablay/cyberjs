@@ -4,12 +4,14 @@ var angulartsApp;
 (function (angulartsApp) {
     var RelationCtrl = (function () {
         // @ngInject
-        function RelationCtrl($state, RelationFactory) {
-            console.debug('[RelationCtrl] systemId %s, parameterId %s', $state.params.systemId, $state.params.relationId);
-            this.relationService = RelationFactory($state.params.systemId);
+        function RelationCtrl($state, RelationFactory, ParameterFactory) {
+            var systemId = $state.params.systemId;
+            console.debug('[RelationCtrl] systemId %s, parameterId %s', systemId, $state.params.relationId);
+            this.relationService = RelationFactory(systemId);
             console.debug('[RelationCtrl] parameter %o', this.relationService);
             this.relation = this.relationService.read($state.params.relationId);
             console.debug('[RelationCtrl] data %o', this.relation);
+            this.parameters = ParameterFactory(systemId).list();
         }
         return RelationCtrl;
     })();

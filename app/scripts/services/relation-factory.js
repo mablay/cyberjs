@@ -30,10 +30,10 @@ var angulartsApp;
             var relation = {
                 id: angulartsApp.randomId(),
                 name: 'New System',
-                description: '',
-                min: 0,
-                max: 100,
-                default: 10
+                description: null,
+                domain: null,
+                coDomain: null,
+                data: []
             };
             if (typeof opt === 'string') {
                 relation.name = opt;

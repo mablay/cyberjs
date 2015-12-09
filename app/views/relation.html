@@ -1,3 +1,51 @@
-<h3>Relation Details</h3>
+<h3>Relation - <span ng-bind="vc.relation.name"></span></h3>
+<textarea class="form-control"
+          rows="3"
+          placeholder="Description..."
+          ng-model="vc.relation.description"></textarea>
+<br>
+
+<form class="form-horizontal">
+
+  <!-- DOMAIN -->
+  <div class="form-group">
+    <label for="domain" class="col-sm-2 control-label">Domain</label>
+    <div class="col-sm-10">
+      <select id="domain"
+              class="form-control"
+              ng-model="vc.relation.domain"
+              ng-options=" vc.parameters">
+      </select>
+    </div>
+  </div>
+
+  <!-- CODOMAIN -->
+  <div class="form-group">
+    <label for="coDomain" class="col-sm-2 control-label">coDomain</label>
+    <div class="col-sm-10">
+      <input type="text"
+             class="form-control"
+             id="coDomain"
+             placeholder="Choose a coDomain"
+             ng-model="vc.relation.coDomain">
+    </div>
+  </div>
+
+  <!-- DATA -->
+  <div class="form-group">
+    <label for="data" class="col-sm-2 control-label">Data</label>
+    <div class="col-sm-10">
+      <input type="text"
+             class="form-control"
+             id="data"
+             placeholder="relation"
+             ng-model="vc.relation.data">
+    </div>
+  </div>
+
+</form>
+
+
 
 <pre ng-bind="vc.relation|json"></pre>
+
