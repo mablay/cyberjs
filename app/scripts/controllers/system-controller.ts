@@ -12,10 +12,10 @@ module angulartsApp {
     data:SystemService;
     system:ISystem;
     parameters:ParameterFactory;
-    relations:RelationFactory;
+    relations:RelationService;
 
     // @ngInject
-    constructor (System, ParameterFactory, RelationFactory, $stateParams, public $state) {
+    constructor (System, ParameterFactory, RelationFactory, $stateParams, public $state, $scope) {
       console.log('[SystemCtrl] constructor stateParams.systemId %o', $stateParams.systemId);
       this.data = System;//new SystemService($localStorage);
       if ($stateParams.systemId) {
@@ -24,6 +24,7 @@ module angulartsApp {
         this.relations = RelationFactory(this.system.id);
         console.log('[SystemCtrl] constructor %o', this.parameters);
       }
+
     }
 
     list():{[id:string]:ISystem} {
@@ -34,18 +35,23 @@ module angulartsApp {
       return this.data.read(id);
     }
 
+
+
+    // PARAMETER methods
+
     uiAddParameter(name):void {
       console.debug('[System] this %o', this);
       console.debug('[System] Add parameter %s', name);
       this.system.parameters.push(name);
     }
-    uiSelectParameter(parameterId):void {
-      var state:any = angular.injector(['ui.router']).get('$state');
-      var systemId = state.params.systemId;
-      //var id = $scope.service.list();
-      console.debug('[System] system %s, uiSelectParameter %s', systemId, parameterId)
-      console.debug('[System] uiSelectParameter. Navigate to system[%s].parameter[%s]', systemId, parameterId);
-      this.$state.go('layout.system.parameter', {systemId: systemId, parameterId:parameterId});
+
+    // Here we need lambda syntax to keep the "this" context
+    public onSelectParameter = (parameterId:string):void => {
+      console.debug('[System] selectParameter %s', parameterId);
+      this.$state.go('layout.system.parameter', {
+        systemId: this.$state.params.systemId,
+        parameterId: parameterId
+      });
     }
 
     uiRemoveParameter(index):void {
@@ -55,12 +61,24 @@ module angulartsApp {
     }
 
 
+    // RELATION methods
+
     uiAddRelation(name):void {
       console.debug('[System] Add relation %s', name);
     }
     uiRemoveRelation(name):void {
       console.debug('[System] Remove relation %s', name);
     }
+
+    // Here we need lambda syntax to keep the "this" context
+    public onSelectRelation = (relationId:string):void => {
+      console.debug('[System] selectRelation %s', relationId);
+      this.$state.go('layout.system.relation', {
+        systemId: this.$state.params.systemId,
+        relationId: relationId
+      });
+    }
+
 
     uiAddSystem(name):void {
       console.log('[System] User added system %s', name);

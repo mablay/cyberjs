@@ -5,7 +5,7 @@
     <div ng-repeat="(id, system) in vc.systems.list()"
          class="btn btn-primary btn-block"
          ng-bind="system.name"
-         ui-sref="layout.systemDetail({id:id})"></div>
+         ui-sref="layout.system({systemId:id})"></div>
   </div>
 
   <!-- Instance List -->

@@ -12,7 +12,8 @@ var angulartsApp;
             this.restrict = 'A';
             this.scope = {
                 service: '=tsList',
-                select: '=onSelect'
+                route: '@',
+                onSelect: '=onSelect'
             };
         }
         TsList.prototype.controller = function ($scope, $state) {
@@ -27,11 +28,11 @@ var angulartsApp;
                 $scope.newEntryName = "";
             };
             $scope.selectEntry = function (id) {
-                if (!this.select) {
-                    return console.warn('onSelect method was not provided for tsList!');
-                }
-                console.debug('[TsList] selectEntry ', id);
-                this.select(id);
+                console.debug('[TsList] selectEntry %s, route %o', id, $scope.route);
+                $scope.$emit(TsList.EVENT_SELECT, {
+                    route: $scope.route,
+                    id: id
+                });
             };
             $scope.removeEntry = function (id) {
                 //console.debug('[TsList] removeEntry %s', id);
@@ -39,6 +40,9 @@ var angulartsApp;
                 delete $scope.list[id];
             };
         };
+        TsList.EVENT_SELECT = 'TsListSelect';
+        TsList.EVENT_ADD = 'TsListAdd';
+        TsList.EVENT_REMOVE = 'TsListRemove';
         return TsList;
     })();
     angulartsApp.TsList = TsList;

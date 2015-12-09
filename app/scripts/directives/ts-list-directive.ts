@@ -9,11 +9,17 @@ module angulartsApp {
    * Entries can be added and removed
    */
   export class TsList implements ng.IDirective {
+
+    static EVENT_SELECT = 'TsListSelect';
+    static EVENT_ADD = 'TsListAdd';
+    static EVENT_REMOVE = 'TsListRemove';
+
     templateUrl = 'views/ts-list-directive.html';
     restrict = 'A';
     scope = {
       service: '=tsList',
-      select: '=onSelect'
+      route: '@',
+      onSelect: '=onSelect'
     };
 
     controller($scope: any, $state): void {
@@ -31,11 +37,11 @@ module angulartsApp {
       };
 
       $scope.selectEntry = function(id:string) {
-        if (!this.select) {
-          return console.warn('onSelect method was not provided for tsList!');
-        }
-        console.debug('[TsList] selectEntry ', id);
-        this.select(id);
+        console.debug('[TsList] selectEntry %s, route %o', id, $scope.route);
+        $scope.$emit(TsList.EVENT_SELECT, {
+          route: $scope.route,
+          id: id
+        });
       };
 
       $scope.removeEntry = function(id:string) {

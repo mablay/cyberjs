@@ -72,16 +72,17 @@ angular.module('angulartsApp', [
         url: '/parameter/:parameterId',
         templateUrl: 'views/parameter.html',
         controller: 'ParameterCtrl',
-        controllerAs: 'parameter'
+        controllerAs: 'vc'
+      })
+      .state('layout.system.relation', {
+        url: '/relation/:relationId',
+        templateUrl: 'views/relation.html',
+        controller: 'RelationCtrl',
+        controllerAs: 'vc'
       })
       .state('layout.instance', {
         templateUrl: 'views/instance.html',
         controller: 'InstanceCtrl',
         controllerAs: 'instance'
-      })
-      .state('layout.relation', {
-        templateUrl: 'views/relation.html',
-        controller: 'RelationCtrl',
-        controllerAs: 'relation'
       });
   });

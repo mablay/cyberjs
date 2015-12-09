@@ -8,24 +8,24 @@ var angulartsApp;
                 console.warn('[relationFactory] Invalid System ID!');
                 return null;
             }
-            return new RelationFactory(systemId, $localStorage);
+            return new RelationService(systemId, $localStorage);
         };
     }
     angulartsApp.relationFactory = relationFactory;
-    var RelationFactory = (function () {
+    var RelationService = (function () {
         // @ngInject
-        function RelationFactory(systemId, storage) {
+        function RelationService(systemId, storage) {
             this.systemId = systemId;
             this.storage = storage;
             this.storage.systems[this.systemId].relations = this.storage.systems[this.systemId].relations || {};
             console.log('[RelationFactory] Create RelationService for system %s', this.systemId);
         }
-        RelationFactory.prototype.list = function () {
-            console.debug('[RelationFactory] list %o', this.systemId);
+        RelationService.prototype.list = function () {
+            console.debug('[RelationService] list %o', this.systemId);
             return this.storage.systems[this.systemId].relations;
         };
-        RelationFactory.prototype.create = function (opt) {
-            console.debug('[RelationFactory] create %o', opt);
+        RelationService.prototype.create = function (opt) {
+            console.debug('[RelationService] create %o', opt);
             // Default data
             var relation = {
                 id: angulartsApp.randomId(),
@@ -45,15 +45,15 @@ var angulartsApp;
             this.storage.systems[this.systemId].relations[relation.id] = relation;
             return relation;
         };
-        RelationFactory.prototype.read = function (id) {
-            return this.storage.relations[id];
+        RelationService.prototype.read = function (id) {
+            return this.storage.systems[this.systemId].relations[id];
         };
-        RelationFactory.prototype.remove = function (id) {
-            delete this.storage.relations[id];
+        RelationService.prototype.remove = function (id) {
+            delete this.storage.systems[this.systemId].relations[id];
         };
-        return RelationFactory;
+        return RelationService;
     })();
-    angulartsApp.RelationFactory = RelationFactory;
+    angulartsApp.RelationService = RelationService;
 })(angulartsApp || (angulartsApp = {}));
 angular.module('angulartsApp').service('RelationFactory', angulartsApp.relationFactory);
 //# sourceMappingURL=relation-factory.js.map

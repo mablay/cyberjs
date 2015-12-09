@@ -10,7 +10,7 @@ module angulartsApp {
         console.warn('[relationFactory] Invalid System ID!');
         return null;
       }
-      return new RelationFactory(systemId, $localStorage);
+      return new RelationService(systemId, $localStorage);
     }
   }
 
@@ -24,7 +24,7 @@ module angulartsApp {
     default: number;
   }
 
-  export class RelationFactory {
+  export class RelationService {
 
     // @ngInject
     constructor (public systemId:string, public storage) {
@@ -33,12 +33,12 @@ module angulartsApp {
     }
 
     list() {
-      console.debug('[RelationFactory] list %o', this.systemId);
+      console.debug('[RelationService] list %o', this.systemId);
       return this.storage.systems[this.systemId].relations;
     }
 
     create(opt:{name:string}|string):IRelation {
-      console.debug('[RelationFactory] create %o', opt);
+      console.debug('[RelationService] create %o', opt);
       // Default data
       var relation:IRelation = {
         id: randomId(),
@@ -62,11 +62,11 @@ module angulartsApp {
     }
 
     read(id:string):IRelation {
-      return this.storage.relations[id];
+      return this.storage.systems[this.systemId].relations[id];
     }
 
     remove(id:string):void {
-      delete this.storage.relations[id];
+      delete this.storage.systems[this.systemId].relations[id];
     }
 
   }

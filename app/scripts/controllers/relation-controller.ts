@@ -5,10 +5,20 @@
 module angulartsApp {
 
   export class RelationCtrl {
-    // @ngInject
-    constructor (private $scope: IRelation) {
 
+
+    relation:IRelation;
+    relationService:RelationService;
+
+    // @ngInject
+    constructor ($state, RelationFactory) {
+      console.debug('[RelationCtrl] systemId %s, parameterId %s', $state.params.systemId, $state.params.relationId);
+      this.relationService = RelationFactory($state.params.systemId);
+      console.debug('[RelationCtrl] parameter %o', this.relationService);
+      this.relation = this.relationService.read($state.params.relationId);
+      console.debug('[RelationCtrl] data %o', this.relation);
     }
+
   }
 }
 

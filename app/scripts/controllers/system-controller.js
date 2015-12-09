@@ -4,8 +4,25 @@ var angulartsApp;
 (function (angulartsApp) {
     var SystemCtrl = (function () {
         // @ngInject
-        function SystemCtrl(System, ParameterFactory, RelationFactory, $stateParams, $state) {
+        function SystemCtrl(System, ParameterFactory, RelationFactory, $stateParams, $state, $scope) {
+            var _this = this;
             this.$state = $state;
+            // Here we need lambda syntax to keep the "this" context
+            this.onSelectParameter = function (parameterId) {
+                console.debug('[System] selectParameter %s', parameterId);
+                _this.$state.go('layout.system.parameter', {
+                    systemId: _this.$state.params.systemId,
+                    parameterId: parameterId
+                });
+            };
+            // Here we need lambda syntax to keep the "this" context
+            this.onSelectRelation = function (relationId) {
+                console.debug('[System] selectRelation %s', relationId);
+                _this.$state.go('layout.system.relation', {
+                    systemId: _this.$state.params.systemId,
+                    relationId: relationId
+                });
+            };
             console.log('[SystemCtrl] constructor stateParams.systemId %o', $stateParams.systemId);
             this.data = System; //new SystemService($localStorage);
             if ($stateParams.systemId) {
@@ -21,24 +38,18 @@ var angulartsApp;
         SystemCtrl.prototype.read = function (id) {
             return this.data.read(id);
         };
+        // PARAMETER methods
         SystemCtrl.prototype.uiAddParameter = function (name) {
             console.debug('[System] this %o', this);
             console.debug('[System] Add parameter %s', name);
             this.system.parameters.push(name);
-        };
-        SystemCtrl.prototype.uiSelectParameter = function (parameterId) {
-            var state = angular.injector(['ui.router']).get('$state');
-            var systemId = state.params.systemId;
-            //var id = $scope.service.list();
-            console.debug('[System] system %s, uiSelectParameter %s', systemId, parameterId);
-            console.debug('[System] uiSelectParameter. Navigate to system[%s].parameter[%s]', systemId, parameterId);
-            this.$state.go('layout.system.parameter', { systemId: systemId, parameterId: parameterId });
         };
         SystemCtrl.prototype.uiRemoveParameter = function (index) {
             var name = this.system.parameters[index];
             console.debug('[System] Remove parameter %s', name);
             this.system.parameters.splice(index, 1);
         };
+        // RELATION methods
         SystemCtrl.prototype.uiAddRelation = function (name) {
             console.debug('[System] Add relation %s', name);
         };

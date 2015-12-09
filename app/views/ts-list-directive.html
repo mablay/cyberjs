@@ -15,7 +15,7 @@
     <li ng-repeat="(id, entry) in list track by id"
         class="list-group-item">
       <span ng-bind="entry.name"
-            ng-click="selectEntry(id)"></span>
+            ng-click="onSelect(id)"></span>
       <span class="pull-right clickable"
             ng-click="removeEntry(id)">
         <span class="glyphicon glyphicon-minus-sign"></span>
