@@ -3,23 +3,19 @@
 'use strict';
 
 module angulartsApp {
-  export interface IInstance {
-    id: string;
-    systemId: string;
-    history: Array<IState>
-  }
 
   export class InstanceCtrl {
+
+    instance:IInstance;
+
     // @ngInject
-    constructor (private $scope: any) {
-      $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-      ];
+    constructor (InstanceFactory, $state) {
+      if ($state.params.instanceId) {
+        this.instance = InstanceFactory($state.params.instanceId);
+        console.debug('[InstanceCtrl] constructor for %o', this.instance);
+      }
     }
   }
 }
 
-angular.module('angulartsApp')
-  .controller('InstanceCtrl', angulartsApp.InstanceCtrl);
+angular.module('angulartsApp').controller('InstanceCtrl', angulartsApp.InstanceCtrl);

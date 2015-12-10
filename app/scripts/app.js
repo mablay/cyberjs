@@ -4,8 +4,8 @@
 /// <reference path="services/parameter-factory.ts" />
 /// <reference path="services/parameter-factory.ts" />
 /// <reference path="services/relation-factory.ts" />
-/// <reference path="services/state-service.ts" />
-/// <reference path="services/instance-service.ts" />
+/// <reference path="services/state-factory.ts" />
+/// <reference path="services/instance-factory.ts" />
 /// <reference path="controllers/system-controller.ts" />
 /// <reference path="controllers/parameter-controller.ts" />
 /// <reference path="controllers/relation-controller.ts" />
@@ -15,7 +15,7 @@
 var angulartsApp;
 (function (angulartsApp) {
     angulartsApp.randomId = function () {
-        return '' + Math.floor((Math.random() * 100) + 1) + Date.now();
+        return '' + Math.floor((Math.random() * 90) + 10) + Date.now();
     };
 })(angulartsApp || (angulartsApp = {}));
 angular.module('angulartsApp', [
@@ -75,6 +75,7 @@ angular.module('angulartsApp', [
         controllerAs: 'vc'
     })
         .state('layout.instance', {
+        url: '/instance/:instanceId',
         templateUrl: 'views/instance.html',
         controller: 'InstanceCtrl',
         controllerAs: 'instance'

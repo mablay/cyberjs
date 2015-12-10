@@ -4,7 +4,7 @@ var angulartsApp;
 (function (angulartsApp) {
     var SystemCtrl = (function () {
         // @ngInject
-        function SystemCtrl(System, ParameterFactory, RelationFactory, $stateParams, $state, $scope) {
+        function SystemCtrl(System, ParameterFactory, RelationFactory, InstanceFactory, $stateParams, $state, $scope) {
             var _this = this;
             this.$state = $state;
             // Here we need lambda syntax to keep the "this" context
@@ -29,6 +29,7 @@ var angulartsApp;
                 this.system = this.data.read($stateParams.systemId);
                 this.parameters = ParameterFactory(this.system.id);
                 this.relations = RelationFactory(this.system.id);
+                this.instances = InstanceFactory();
                 console.log('[SystemCtrl] constructor %o', this.parameters);
             }
         }
@@ -61,6 +62,16 @@ var angulartsApp;
             var system = this.data.create(name);
             console.log('[System] create system %o', system);
             console.log('[System] system list %o', this.data.list());
+        };
+        SystemCtrl.prototype.uiCreateInstance = function () {
+            console.debug('[SystemCtrl] create instance');
+            // TODO: Validate system, params, relations
+            // ...
+            var instance = this.instances.create(this.system.id);
+            console.info('[SystemCtrl] created instance %o', instance.id);
+            this.$state.go('layout.instance', {
+                instanceId: instance.id
+            });
         };
         return SystemCtrl;
     })();

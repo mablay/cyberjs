@@ -12,14 +12,9 @@ module angulartsApp {
   export class StateCtrl {
     // @ngInject
     constructor (private $scope: any) {
-      $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-      ];
+
     }
   }
 }
 
-angular.module('angulartsApp')
-  .controller('StateCtrl', angulartsApp.StateCtrl);
+angular.module('angulartsApp').controller('StateCtrl', angulartsApp.StateCtrl);

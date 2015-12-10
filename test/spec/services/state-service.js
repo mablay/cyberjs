@@ -14,4 +14,4 @@ describe('Service: StateService', function () {
         expect(!!StateService).toBe(true);
     });
 });
-//# sourceMappingURL=state-service.js.map
+//# sourceMappingURL=state-factory.js.map
