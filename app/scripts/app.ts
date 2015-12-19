@@ -5,7 +5,7 @@
 /// <reference path="services/parameter-factory.ts" />
 /// <reference path="services/relation-factory.ts" />
 /// <reference path="services/state-factory.ts" />
-/// <reference path="services/instance-factory.ts" />
+/// <reference path="services/instance-service.ts" />
 /// <reference path="controllers/system-controller.ts" />
 /// <reference path="controllers/parameter-controller.ts" />
 /// <reference path="controllers/relation-controller.ts" />
@@ -84,6 +84,12 @@ angular.module('angulartsApp', [
         url:'/instance/:instanceId',
         templateUrl: 'views/instance.html',
         controller: 'InstanceCtrl',
-        controllerAs: 'instance'
+        controllerAs: 'vc'
+      })
+      .state('layout.instance.state', {
+        url:'/state/:stateId',
+        templateUrl: 'views/state.html',
+        controller: 'StateCtrl',
+        controllerAs: 'vc'
       });
   });

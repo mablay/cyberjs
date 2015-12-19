@@ -14,4 +14,4 @@ describe('Service: InstanceService', function () {
         expect(!!InstanceService).toBe(true);
     });
 });
-//# sourceMappingURL=instance-factory.js.map
+//# sourceMappingURL=instance-service.js.map

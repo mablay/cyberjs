@@ -14,17 +14,24 @@ module angulartsApp {
     parameters:ParameterFactory;
     relations:RelationService;
     instances:InstanceService;
+    associatedInstances:Array<IInstance>;
 
     // @ngInject
-    constructor (System, ParameterFactory, RelationFactory, InstanceFactory, $stateParams, public $state, $scope) {
+    constructor (System, ParameterFactory, RelationFactory, Instance, $stateParams, public $state, $scope) {
       console.log('[SystemCtrl] constructor stateParams.systemId %o', $stateParams.systemId);
       this.data = System;//new SystemService($localStorage);
       if ($stateParams.systemId) {
         this.system = this.data.read($stateParams.systemId);
         this.parameters = ParameterFactory(this.system.id);
-        this.relations = RelationFactory(this.system.id);
-        this.instances = InstanceFactory();
         console.log('[SystemCtrl] constructor %o', this.parameters);
+        this.relations = RelationFactory(this.system.id);
+        var instanceList = Instance.list();
+        var system = this.system;
+        this.instances = Instance;
+        this.associatedInstances = _.filter(instanceList, function(instance:IInstance){
+          return instance.systemId === system.id;
+        });
+        console.log('[SystemCtrl] constructor associated instances %o', this.associatedInstances);
       }
 
     }

@@ -2,12 +2,13 @@
 'use strict';
 var angulartsApp;
 (function (angulartsApp) {
-    function instanceFactory($localStorage) {
-        return function () {
-            return new InstanceService($localStorage);
-        };
-    }
-    angulartsApp.instanceFactory = instanceFactory;
+    /*
+      export function instanceFactory($localStorage) {
+        return function() {
+          return new InstanceService($localStorage);
+        }
+      }
+    */
     var InstanceService = (function () {
         // @ngInject
         function InstanceService($localStorage) {
@@ -35,5 +36,5 @@ var angulartsApp;
     })();
     angulartsApp.InstanceService = InstanceService;
 })(angulartsApp || (angulartsApp = {}));
-angular.module('angulartsApp').factory('InstanceFactory', angulartsApp.instanceFactory);
-//# sourceMappingURL=instance-factory.js.map
+angular.module('angulartsApp').service('Instance', angulartsApp.InstanceService);
+//# sourceMappingURL=instance-service.js.map

@@ -10,13 +10,13 @@ module angulartsApp {
     history: Array<IState>
   }
 
-
+/*
   export function instanceFactory($localStorage) {
     return function() {
       return new InstanceService($localStorage);
     }
   }
-
+*/
   export class InstanceService {
 
     storage:any;
@@ -53,4 +53,4 @@ module angulartsApp {
   }
 }
 
-angular.module('angulartsApp').factory('InstanceFactory', angulartsApp.instanceFactory);
+angular.module('angulartsApp').service('Instance', angulartsApp.InstanceService);

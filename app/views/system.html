@@ -13,8 +13,9 @@
 
   <!-- List Systems-->
   <ul>
-    <li ng-repeat="(id, system) in systemCtrl.list()"
-        ng-bind="system.name"></li>
+    <li ng-repeat="(id, system) in systemCtrl.list()">
+      <a ui-sref="layout.system({systemId: id})" ng-bind="system.name"></a>
+    </li>
   </ul>
 
   <pre ng-bind="systemCtrl.list()|json"></pre>

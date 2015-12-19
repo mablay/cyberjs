@@ -1,0 +1,16 @@
+<div class="state-view">
+  <h3>Current state</h3>
+
+  <dl class="dl-horizontal">
+    <div ng-repeat="(id, value) in vc.state.values" class="">
+      <dt ng-bind="vc.parameterName(id)"></dt>
+      <dd ng-bind="value"></dd>
+    </div>
+  </dl>
+
+  <div>
+    <h4>State - Debug</h4>
+    <pre ng-bind="vc.state|json"></pre>
+  </div>
+</div>
+

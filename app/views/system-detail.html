@@ -1,8 +1,15 @@
 <div class="ditch">
 
   <h3 ng-bind="systemCtrl.system.name"></h3>
-  <div class="btn btn-primary"
+  <div class="btn btn-info"
        ng-click="systemCtrl.uiCreateInstance()">Create Instance</div>
+
+  <div class="btn btn-primary"
+       ng-show="systemCtrl.associatedInstances"
+       ui-sref="layout.instance({instanceId: systemCtrl.associatedInstances[0].id})">Existing Instance</div>
+
+  <pre ng-bind="systemCtrl.associatedInstances|json"></pre>
+
 
   <div class="row">
     <div class="col-sm-6 col-md-6 col-lg-6">
